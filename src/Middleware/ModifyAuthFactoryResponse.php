@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 
 class ModifyAuthFactoryResponse implements MiddlewareInterface
 {
@@ -29,11 +30,17 @@ class ModifyAuthFactoryResponse implements MiddlewareInterface
             return $response;
         }
 
-        $url = resolve(UrlGenerator::class);
+        $url = resolve(UrlGenerator::class)->to('forum');
         $translator = resolve(Translator::class);
 
         $payload = $matches[1];
-        $redirect = $url->to('forum')->base();
+
+        try {
+            // From sycho/flarum-private-facade
+            $redirect = $url->route('sycho-private-facade.signup');
+        } catch (RuntimeException $exception) {
+            $redirect = $url->base();
+        }
 
         // No need to pass loggedIn:true to the app, as it would only reload itself again
         if ($payload !== '{"loggedIn":true}') {
