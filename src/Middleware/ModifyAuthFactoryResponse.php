@@ -52,7 +52,7 @@ class ModifyAuthFactoryResponse implements MiddlewareInterface
         $continue = htmlentities($translator->trans('clarkwinkelmann-auth-popup-failsafe.api.auth.continue'));
 
         $newBody = new Stream('php://temp', 'wb+');
-        $newBody->write("<p>$info</p><p><a href=\"$href\">$continue</a></p>" . $body);
+        $newBody->write("<style>body{text-align:center;padding:20px;padding-top:40vh}p{font-family:sans-serif;font-size:2em;color:#aaa}a{color:#333}</style><p>$info</p><p><a href=\"$href\">$continue</a></p>" . $body);
         $newBody->rewind();
 
         return $response->withBody($newBody);
