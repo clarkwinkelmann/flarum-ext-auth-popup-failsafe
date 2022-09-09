@@ -1,0 +1,40 @@
+{
+    "name": "clarkwinkelmann/flarum-ext-auth-popup-failsafe",
+    "description": "Failsafe in case the browser blocks the Flarum auth popup from closing",
+    "keywords": [
+        "flarum",
+        "auth"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.2"
+    },
+    "authors": [
+        {
+            "name": "Clark Winkelmann",
+            "homepage": "https://clarkwinkelmann.com/",
+            "email": "clark.winkelmann@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/clarkwinkelmann/flarum-ext-auth-popup-failsafe"
+    },
+    "autoload": {
+        "psr-4": {
+            "ClarkWinkelmann\\AuthPopupFailsafe\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Auth Popup Failsafe",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-bug",
+                "backgroundColor": "#684ba6",
+                "color": "#fff"
+            }
+        }
+    }
+}

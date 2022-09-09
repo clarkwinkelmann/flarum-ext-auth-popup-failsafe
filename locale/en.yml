@@ -1,0 +1,5 @@
+clarkwinkelmann-auth-popup-failsafe:
+    api:
+        auth:
+            info: This popup should automatically close in a few seconds
+            continue: If not, click here to continue the login process
